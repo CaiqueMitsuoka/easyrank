@@ -1,2 +1,10 @@
 class Team < ApplicationRecord
+  has_many :home_games, foreign_key: :home_team_id, class_name: 'Game'
+  has_many :foreign_games, foreign_key: :foreign_team_id, class_name: 'Game'
+
+  validates_presence_of :name, :foundation_year, :initials
+
+  def games
+    home_games + foreign_games
+  end
 end
