@@ -2,11 +2,21 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
-const Form = (props) => {
-  const { handleSubmit } = props
+class Form extends Component {
+  constructor (props) {
+    super(props)
 
-  const handleFormSubmit = (event) => {
+    this.handleFormSubmit = this.handleFormSubmit.bind(this)
+  }
+
+  componentDidUpdate () {
+    this.fillFields()
+  }
+
+  handleFormSubmit (event) {
     event.preventDefault()
+
+    const { handleSubmit } = this.props
 
     const data = {
       team: {
@@ -17,50 +27,62 @@ const Form = (props) => {
     }
 
     handleSubmit(data)
-      .then(() => clearFields())
+      .then(() => this.clearFields())
   }
 
-  const clearFields = () => {
-   this.name.value = ''
-   this.foundationYear.value = ''
-   this.initials.value = ''
+  fillFields () {
+    const { team } = this.props
+
+    this.name.value = team.name
+    this.foundationYear.value = team.foundation_year
+    this.initials.value = team.initials
   }
 
-  return (
-    <form onSubmit={handleFormSubmit}>
-      <label htmlFor='name'>
-        Name:
-        <input
-          ref={node => this.name = node}
-          type='text'
-          id='name'
-          name='name' />
-      </label>
+  clearFields () {
+    this.name.value = ''
+    this.foundationYear.value = ''
+    this.initials.value = ''
+  }
 
-      <label htmlFor='foundation-year'>
-        Foundation Year:
-        <input
-          ref={node => this.foundationYear = node}
-          type='number' id='foundation-year'
-          name='foundation_year' />
-      </label>
+  render () {
 
-      <label htmlFor='initials'>
-        Initials:
-        <input
-          ref={node => this.initials = node}
-          type='text'
-          id='initials'
-          name='initials' />
-      </label>
+    return (
+      <form onSubmit={this.handleFormSubmit}>
+        <label htmlFor='name'>
+          Name:
+          <input
+            ref={node => this.name = node}
+            type='text'
+            id='name'
+            name='name' />
+        </label>
 
-      <button type='submit'> Submit </button>
-    </form>
-  )
+        <label htmlFor='foundation-year'>
+          Foundation Year:
+          <input
+            ref={node => this.foundationYear = node}
+            type='number' id='foundation-year'
+            name='foundation_year' />
+        </label>
+
+        <label htmlFor='initials'>
+          Initials:
+          <input
+            ref={node => this.initials = node}
+            type='text'
+            id='initials'
+            name='initials' />
+        </label>
+
+        <button type='submit'> Submit </button>
+      </form>
+    )
+  }
 }
 
 Form.propTypes = {
-  handleSubmit: PropTypes.func.isRequired
+  handleSubmit: PropTypes.func.isRequired,
+  team: PropTypes.object
 }
 
-export default Form;
+export default Form
