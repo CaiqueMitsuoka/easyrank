@@ -1,15 +1,17 @@
-class TeamsController < ApplicationController
+class Api::TeamsController < Api::ApplicationController
   before_action :set_team, only: [:show, :update, :destroy]
 
   # GET /teams
   # GET /teams.json
   def index
     @teams = Team.all
+    render json: @teams
   end
 
   # GET /teams/1
   # GET /teams/1.json
   def show
+    render json: @team
   end
 
   # POST /teams
@@ -18,7 +20,7 @@ class TeamsController < ApplicationController
     @team = Team.new(team_params)
 
     if @team.save
-      render :show, status: :created, location: @team
+      render json: @team, status: :created
     else
       render json: @team.errors, status: :unprocessable_entity
     end
@@ -28,7 +30,7 @@ class TeamsController < ApplicationController
   # PATCH/PUT /teams/1.json
   def update
     if @team.update(team_params)
-      render :show, status: :ok, location: @team
+      render json: @team, status: :ok
     else
       render json: @team.errors, status: :unprocessable_entity
     end
@@ -46,8 +48,7 @@ class TeamsController < ApplicationController
       @team = Team.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def team_params
-      params.require(:team).permit(:name, :points, :foundation_year, :initials)
+      params.require(:team).permit(:name, :foundation_year, :initials)
     end
 end
