@@ -7,7 +7,7 @@ import { createTeam } from '../../serviceAPI'
 
 class Create extends Component {
   handleSubmit (query) {
-    createTeam(query)
+    return createTeam(query)
   }
 
   render() {
