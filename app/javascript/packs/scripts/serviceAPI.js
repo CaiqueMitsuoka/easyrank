@@ -32,3 +32,10 @@ export const updateTeam = (id, query) => {
 
     .catch(error => console.log(error))
 }
+
+export const deleteTeam = (id) => {
+  return fetch(`${API_TEAMS}/${id}`, { method: 'DELETE' })
+    .then(response => response)
+
+    .catch(error => console.log(error))
+}
