@@ -1,9 +1,16 @@
 const API_TEAMS = `http://localhost:3000/api/teams`
+const headers = new Headers({ "Content-Type": "application/json" })
 
-export const fetchAllTeams = () => requestAPI(API_TEAMS)
+export const fetchAllTeams = () => {
+  return fetch(API_TEAMS)
+    .then(response => response.json())
+    .then(data => data)
 
-const requestAPI = (URL, method = 'GET', query = {}) => {
-  return fetch(URL, { method, body: query })
+    .catch(error => console.log(error))
+}
+
+export const createTeam = (query) => {
+  return fetch(API_TEAMS, { method: 'POST', headers, body: JSON.stringify(query) })
     .then(response => response.json())
     .then(data => data)
 
