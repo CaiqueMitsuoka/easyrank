@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  resources :games
-  resources :teams
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'easy_rank#index'
+  root 'react/easy_rank#index'
+
+  namespace :api, defaults: { format: :json } do
+    resources :games
+    resources :teams
+  end
+
+  namespace :react, path: '', constraints: { format: :html } do
+    get '/*path', to: 'easy_rank#index'
+  end
 end
