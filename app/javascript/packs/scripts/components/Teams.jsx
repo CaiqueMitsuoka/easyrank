@@ -10,6 +10,8 @@ const Teams = (props) => {
     }
   }
 
+  const { teams } = props
+
   return (
     <div>
       <h2>Teams</h2>
@@ -18,19 +20,23 @@ const Teams = (props) => {
         <tbody>
           <tr>
             <th> Position </th>
-            <th> Team </th>
+            <th> Initials </th>
+            <th> Name </th>
+            <th> Foundation Year </th>
             <th> Points </th>
             <th> Edit </th>
             <th> Delete </th>
           </tr>
 
           {
-            props.teams.map((team, index) =>
+            teams.map((team, index) =>
             <tr key={index}>
               <td> {team.position} </td>
+              <td> {team.initials} </td>
               <td> {team.name} </td>
+              <td> {team.foundation_year} </td>
               <td> {team.points} </td>
-              <td> <Link to={`/team/${team.teamId}/edit`}> &#x270E; </Link> </td>
+              <td> <Link to={`/team/${team.id}/edit`}> &#x270E; </Link> </td>
               <td> <button onClick={this.handleDelete}>&#x2716;</button> </td>
             </tr>
           )
