@@ -2,18 +2,15 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import { deleteTeam } from '../serviceAPI'
 
 const Teams = (props) => {
   const { teams } = props
 
   const handleDelete = (event) => {
     const teamId = event.target.id
+    const teamName = event.target.dataset['name']
 
-    if (confirm(`You really want to delete the ${teamId} team?`)) {
-      deleteTeam(teamId)
-        .then(alert('The team has been deleted'))
-    }
+    props.handleDelete(teamId, teamName)
   }
 
   return (
@@ -41,7 +38,7 @@ const Teams = (props) => {
               <td> {team.foundation_year} </td>
               <td> {team.points} </td>
               <td> <Link to={`/team/${team.id}/edit`}> &#x270E; </Link> </td>
-              <td> <button id={team.id} onClick={handleDelete}> &#x2716; </button> </td>
+              <td> <button id={team.id} data-name={team.name} onClick={handleDelete}> &#x2716; </button> </td>
             </tr>
           )
         }
