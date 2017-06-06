@@ -8,6 +8,7 @@ import { createTeam } from '../../services/team'
 const Create = () => {
   const handleSubmit = (query) => {
     return createTeam(query)
+      .then(() => alert('The team has been created'))
   }
 
   return (

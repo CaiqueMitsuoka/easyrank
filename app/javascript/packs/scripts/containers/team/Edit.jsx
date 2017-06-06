@@ -25,6 +25,7 @@ class Edit extends Component {
     const { teamId } = this.state
 
     return updateTeam(teamId, query)
+      .then(() => alert('The team has been updated'))
   }
 
   render() {

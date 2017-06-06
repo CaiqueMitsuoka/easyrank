@@ -22,6 +22,7 @@ class Create extends Component {
 
   handleSubmit (query) {
     return createGame(query)
+      .then(() => alert('The game has been registered'))
   }
 
   render () {
