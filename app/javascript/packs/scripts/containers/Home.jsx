@@ -37,7 +37,8 @@ class Home extends Component {
         <h2>Easy Rank Teams</h2>
         <Teams teams={teams} handleDelete={this.handleDelete}/>
         <div>
-          <Link to='/team/new'> Criar um time </Link>
+          <Link to='/team/new'> Create Team </Link>
+          <Link to='/game/new'> Create Game </Link>
         </div>
       </div>
     )
