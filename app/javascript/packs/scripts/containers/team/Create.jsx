@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import Form from '../../components/Form'
-import { createTeam } from '../../serviceAPI'
+import Form from '../../components/team/Form'
+import { createTeam } from '../../services/team'
 
 const Create = () => {
   const handleSubmit = (query) => {
@@ -13,7 +13,7 @@ const Create = () => {
   return (
     <div>
       <h2>Create</h2>
-      <Form handleSubmit={this.handleSubmit} />
+      <Form handleSubmit={handleSubmit} />
       <Link to='/'> Voltar </Link>
     </div>
   )

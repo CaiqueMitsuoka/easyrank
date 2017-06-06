@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import Teams from '../components/Teams'
-import { fetchAllTeams, deleteTeam } from '../serviceAPI'
+import { fetchAllTeams, deleteTeam } from '../services/team'
 
 class Home extends Component {
   constructor () {
