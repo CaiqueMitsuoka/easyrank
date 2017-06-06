@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import Form from '../../components/Form'
-import { fetchTeam, updateTeam } from '../../serviceAPI'
+import Form from '../../components/team/Form'
+import { fetchTeam, updateTeam } from '../../services/team'
 
 class Edit extends Component {
   constructor (props) {
@@ -25,6 +25,7 @@ class Edit extends Component {
     const { teamId } = this.state
 
     return updateTeam(teamId, query)
+      .then(() => alert('The team has been updated'))
   }
 
   render() {

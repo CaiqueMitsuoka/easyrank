@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import Form from '../../components/game/Form'
 import { createGame } from '../../services/game'
-import { fetchAllTeams, fetchTeam } from '../../serviceAPI'
+import { fetchAllTeams, fetchTeam } from '../../services/team'
 
 class Create extends Component {
   constructor () {
@@ -22,6 +22,7 @@ class Create extends Component {
 
   handleSubmit (query) {
     return createGame(query)
+      .then(() => alert('The game has been registered'))
   }
 
   render () {

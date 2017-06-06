@@ -27,7 +27,6 @@ class Form extends Component {
     }
 
     handleSubmit(data)
-      .then(() => alert('The game has been registered'))
       .then(() => this.clearFields())
   }
 
