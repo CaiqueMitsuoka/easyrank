@@ -7,4 +7,8 @@ class Team < ApplicationRecord
   def games
     home_games + foreign_games
   end
+
+  def points
+    PointsCalculatorService.of_a_team(self)
+  end
 end
