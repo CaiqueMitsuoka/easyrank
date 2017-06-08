@@ -9,4 +9,14 @@ class Game < ApplicationRecord
   def team_belong_to?(team)
     foreign_team == team || home_team == team
   end
+
+  def winner
+    if home_score > foreign_score
+      home_team
+    elsif home_score == foreign_score
+      nil
+    else
+      foreign_team
+    end
+  end
 end
