@@ -34,7 +34,7 @@ class Home extends Component {
 
     return (
       <div>
-        <h2>Easy Rank Teams</h2>
+        <h2 className='jean-seu-bobo'> Easy Rank Teams</h2>
         <Teams teams={teams} handleDelete={this.handleDelete}/>
         <div>
           <Link to='/team/new'> Create Team </Link>
