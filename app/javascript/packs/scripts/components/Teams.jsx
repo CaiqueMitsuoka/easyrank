@@ -14,9 +14,7 @@ const Teams = (props) => {
   }
 
   return (
-    <div>
-      <h2>Teams</h2>
-
+    <div className="wrapper">
       <table>
         <tbody>
           <tr>
@@ -31,17 +29,17 @@ const Teams = (props) => {
 
           {
             teams.map((team, index) =>
-            <tr key={index}>
-              <td> {team.position} </td>
-              <td> {team.initials} </td>
-              <td> {team.name} </td>
-              <td> {team.foundation_year} </td>
-              <td> {team.points} </td>
-              <td> <Link to={`/team/${team.id}/edit`}> &#x270E; </Link> </td>
-              <td> <button id={team.id} data-name={team.name} onClick={handleDelete}> &#x2716; </button> </td>
-            </tr>
-          )
-        }
+              <tr key={index}>
+                <td> {team.position} </td>
+                <td> {team.initials} </td>
+                <td> {team.name} </td>
+                <td> {team.foundation_year} </td>
+                <td> {team.points} </td>
+                <td> <Link to={`/team/${team.id}/edit`} >  <img src='lead-pencil.png'></img></Link> </td>
+                <td> <button id={team.id} data-name={team.name} onClick={handleDelete} className='btn-delete'> <img src="delete.png"></img> </button> </td>
+              </tr>
+            )
+          }
         </tbody>
       </table>
     </div>

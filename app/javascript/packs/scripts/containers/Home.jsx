@@ -6,20 +6,20 @@ import Teams from '../components/Teams'
 import { fetchAllTeams, deleteTeam } from '../services/team'
 
 class Home extends Component {
-  constructor () {
+  constructor() {
     super()
 
-    this.state = { teams : [] }
+    this.state = { teams: [] }
 
     this.handleDelete = this.handleDelete.bind(this)
   }
 
-  componentDidMount () {
+  componentDidMount() {
     fetchAllTeams()
       .then((teams) => this.setState({ teams }))
   }
 
-  handleDelete (teamId, teamName) {
+  handleDelete(teamId, teamName) {
     if (confirm(`You really want to delete the ${teamName}?`)) {
       deleteTeam(teamId)
         .then(alert('The team has been deleted'))
@@ -29,17 +29,20 @@ class Home extends Component {
     }
   }
 
-  render () {
+  render() {
     const { teams } = this.state
 
     return (
-      <div>
-        <h2 className='jean-seu-bobo'> Easy Rank Teams</h2>
-        <Teams teams={teams} handleDelete={this.handleDelete}/>
-        <div>
-          <Link to='/team/new'> Create Team </Link>
-          <Link to='/game/new'> Create Game </Link>
+      <div className='container'>
+        <header>
+          <h1> Easy Rank Teams</h1>
+        </header>
+        <div className='linkContainer'>
+          <Link to='/team/new' className='link'> Create Team </Link>
+          <Link to='/game/new' className='link'> Create Game </Link>
         </div>
+        <Teams teams={teams} handleDelete={this.handleDelete} />
+
       </div>
     )
   }
