@@ -1,10 +1,11 @@
-.container > header{
+.container > header, .title{
 	margin: 0 auto;
 	padding: 1em;
 	text-align: center;
+	padding: 0;
 }
 
-.container > header h1,h2 {
+.container > header h1,h2, .title {
   font-weight: 600;
 	font-size: 3em;
 	margin: 0;
