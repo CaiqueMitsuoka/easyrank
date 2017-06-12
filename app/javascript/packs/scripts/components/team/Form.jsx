@@ -3,17 +3,17 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
 class Form extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
   }
 
-  componentDidUpdate () {
+  componentDidUpdate() {
     this.fillFields()
   }
 
-  handleFormSubmit (event) {
+  handleFormSubmit(event) {
     event.preventDefault()
 
     const { handleSubmit } = this.props
@@ -30,7 +30,7 @@ class Form extends Component {
       .then(() => this.clearFields())
   }
 
-  fillFields () {
+  fillFields() {
     const { team } = this.props
 
     this.name.value = team.name
@@ -38,13 +38,13 @@ class Form extends Component {
     this.initials.value = team.initials
   }
 
-  clearFields () {
+  clearFields() {
     this.name.value = ''
     this.foundationYear.value = ''
     this.initials.value = ''
   }
 
-  render () {
+  render() {
 
     return (
       <form onSubmit={this.handleFormSubmit}>
@@ -74,7 +74,7 @@ class Form extends Component {
             name='initials' />
         </label>
 
-        <button type='submit'> Submit </button>
+        <div className='linkContainer'><button type='submit' className='btn-submit'> Enviar </button></div>
       </form>
     )
   }

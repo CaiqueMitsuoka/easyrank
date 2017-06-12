@@ -7,7 +7,7 @@ import { createGame } from '../../services/game'
 import { fetchAllTeams, fetchTeam } from '../../services/team'
 
 class Create extends Component {
-  constructor () {
+  constructor() {
     super()
 
     this.state = { teams: [] }
@@ -15,23 +15,23 @@ class Create extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  componentDidMount () {
+  componentDidMount() {
     fetchAllTeams()
       .then((teams) => this.setState({ teams }))
   }
 
-  handleSubmit (query) {
+  handleSubmit(query) {
     return createGame(query)
       .then(() => alert('The game has been registered'))
   }
 
-  render () {
+  render() {
     const { teams } = this.state
     return (
-      <div>
-        <h2>Create</h2>
-        <Form handleSubmit={this.handleSubmit} teams={teams}/>
-        <Link to='/'> Voltar </Link>
+      <div className='container'>
+        <header> <h2>Create</h2> </header>
+        <Form handleSubmit={this.handleSubmit} teams={teams} />
+        <div className='linkContainer'><Link to='/' className='link'> Voltar </Link></div>
       </div>
     )
   }

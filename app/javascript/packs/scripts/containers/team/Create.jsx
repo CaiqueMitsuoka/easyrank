@@ -12,10 +12,10 @@ const Create = () => {
   }
 
   return (
-    <div>
-      <h2>Create</h2>
+    <div className='container'>
+      <header> <h2>Create</h2> </header>
       <Form handleSubmit={handleSubmit} />
-      <Link to='/'> Voltar </Link>
+      <div className='linkContainer'><Link to='/' className='link'> Voltar </Link></div>
     </div>
   )
 }

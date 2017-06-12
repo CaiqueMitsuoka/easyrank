@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
 class Form extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
   }
 
-  handleFormSubmit (event) {
+  handleFormSubmit(event) {
     event.preventDefault()
 
     const { handleSubmit } = this.props
@@ -30,7 +30,7 @@ class Form extends Component {
       .then(() => this.clearFields())
   }
 
-  clearFields () {
+  clearFields() {
     this.homeTeamId.value = ''
     this.foreignTeamId.value = ''
     this.homeScore.value = ''
@@ -40,7 +40,7 @@ class Form extends Component {
     this.judgeName.value = ''
   }
 
-  render () {
+  render() {
     const { teams } = this.props
 
     return (
@@ -49,18 +49,18 @@ class Form extends Component {
           Home Team Name:
 
             <select
-              ref={node => this.homeTeamId = node}
-              id='homeTeamId'
-              name='homeTeamId' >
+            ref={node => this.homeTeamId = node}
+            id='homeTeamId'
+            name='homeTeamId' >
 
-              <option value=''> </option>
+            <option value=''> </option>
 
-              {
-                teams.map((team) =>
-                  <option key={team.id} value={team.id}> { team.name } </option>)
-              }
+            {
+              teams.map((team) =>
+                <option key={team.id} value={team.id}> {team.name} </option>)
+            }
 
-            </select>
+          </select>
         </label>
 
         <label htmlFor='homeScore'>
@@ -84,7 +84,7 @@ class Form extends Component {
 
             {
               teams.map((team) =>
-                <option key={team.id} value={team.id}> { team.name } </option>)
+                <option key={team.id} value={team.id}> {team.name} </option>)
             }
 
           </select>
@@ -126,7 +126,7 @@ class Form extends Component {
             name='judgeName' />
         </label>
 
-        <button type='submit'> Submit </button>
+        <div className='linkContainer'><button type='submit' className='btn-submit'> Enviar </button></div>
       </form>
     )
   }
