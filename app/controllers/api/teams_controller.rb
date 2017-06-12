@@ -4,8 +4,8 @@ class Api::TeamsController < Api::ApplicationController
   # GET /teams
   # GET /teams.json
   def index
-    @teams = Team.all
-    render json: @teams
+    @teams = Team.all.sort {|a,b| a.points<=>b.points}
+    render json: @teams.reverse
   end
 
   # GET /teams/1
