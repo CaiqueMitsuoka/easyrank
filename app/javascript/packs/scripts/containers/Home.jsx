@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import Teams from '../components/Teams'
 import Games from '../components/Games'
-import { fetchAllTeams, deleteTeam, fetchTeam } from '../services/team'
+import { fetchAllTeams, deleteTeam } from '../services/team'
 import { fetchAllGames, deleteGame } from '../services/game'
 
 class Home extends Component {
@@ -15,7 +15,6 @@ class Home extends Component {
 
     this.handleDelete = this.handleDelete.bind(this)
     this.handleDeleteGame = this.handleDeleteGame.bind(this)
-    this.handleFetchTeam = this.handleFetchTeam.bind(this)
   }
 
   componentDidMount() {
@@ -46,11 +45,6 @@ class Home extends Component {
     }
   }
 
-  handleFetchTeam (teamId) {
-    return fetchTeam(teamId)
-      .then((team) => team)
-  }
-
   render () {
     const { teams, games } = this.state
 
@@ -72,7 +66,7 @@ class Home extends Component {
           <Link to='/game/new' className='link'> Create Game </Link>
         </div>
 
-        <Games games={games} handleDelete={this.handleDeleteGame} handleFetchTeam={this.handleFetchTeam} />
+        <Games games={games} teams={teams} handleDelete={this.handleDeleteGame} />
       </div>
     )
   }
