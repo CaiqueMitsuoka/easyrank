@@ -4,12 +4,13 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import Form from '../../components/game/Form'
 import { fetchGame, updateGame } from '../../services/game'
+import { fetchAllTeams, fetchTeam } from '../../services/team'
 
 class Edit extends Component {
   constructor (props) {
     super(props)
 
-    this.state = { gameId: this.props.match.params.id, game : {} }
+    this.state = { gameId: this.props.match.params.id, game: {}, teams: [] }
 
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -19,6 +20,9 @@ class Edit extends Component {
 
     fetchGame(gameId)
       .then((game) => this.setState({ game }))
+    
+    fetchAllTeams()
+      .then((teams) => this.setState({ teams }))
   }
 
   handleSubmit (query) {
@@ -30,14 +34,15 @@ class Edit extends Component {
 
   render() {
     const { game } = this.state
+    const { teams } = this.state
 
     return (
-      <div>
-        <h2>Edit Game</h2>
+      <div className='container'>
+        <header> <h2>Edit game</h2> </header>
         <Form
           game={game}
-          handleSubmit={this.handleSubmit} />
-        <Link to='/'> Voltar </Link>
+          handleSubmit={this.handleSubmit} teams={ teams }/>
+        <div className='linkContainer'><Link to='/' className='link'> Voltar </Link></div>
       </div>
     )
   }

@@ -17,7 +17,7 @@ class App extends Component {
           <Route path='/team/new' component={CreateTeam} />
           <Route path='/team/:id/edit' component={EditTeam} />
           <Route path='/game/new' component={CreateGame} />
-          <Route path='/team/:id/edit' component={EditGame} />
+          <Route path='/game/:id/edit' component={EditGame} />
         </div>
       </Router>
     )

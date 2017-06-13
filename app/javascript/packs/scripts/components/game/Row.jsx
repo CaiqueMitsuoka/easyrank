@@ -8,6 +8,8 @@ class Row extends Component {
     super(props)
 
     this.state = { home: {}, foreign: {} }
+
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   componentDidMount () {
@@ -22,8 +24,7 @@ class Row extends Component {
 
   handleDelete (event) {
     const gameId = event.target.id
-    const gameName = event.target.dataset['name']
-
+    
     this.props.handleDelete(gameId)
   }
 
@@ -41,8 +42,8 @@ class Row extends Component {
         <td> {game.stadium_name} </td>
         <td> <Link to={`/game/${game.id}/edit`}> <img src='lead-pencil.png'></img></Link> </td>
         <td>
-          <button id={game.id} onClick={this.handleDelete} className='btn-delete'>
-            <img src="delete.png"></img>
+          <button onClick={this.handleDelete} className='btn-delete'>
+            <img id={game.id} src="delete.png"></img>
           </button>
         </td>
       </tr>

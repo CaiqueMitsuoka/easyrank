@@ -6,11 +6,9 @@ import Game from './game/Row'
 const Games = (props) => {
   const { games, handleFetchTeam } = props
 
-  const handleDelete = (event) => {
-    const gameId = event.target.id
-    const gameName = event.target.dataset['name']
-
-    props.handleDelete(gameId, gameName)
+  const handleDelete = (gameId) => {
+    
+    props.handleDelete(gameId)
   }
 
   return (
@@ -30,7 +28,7 @@ const Games = (props) => {
 
           {
             games.map((game, index) =>
-              <Game key={index} handleFetchTeam={handleFetchTeam} game={game} />
+              <Game key={index} handleFetchTeam={handleFetchTeam} handleDelete={handleDelete} game={game} />
           )
         }
         </tbody>
