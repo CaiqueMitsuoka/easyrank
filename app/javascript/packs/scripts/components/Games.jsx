@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import Game from './game/Row'
 import { Link } from 'react-router-dom'
 
 const Games = (props) => {
