@@ -30,7 +30,7 @@ const Teams = (props) => {
           {
             teams.map((team, index) =>
               <tr key={index}>
-                <td> {team.position} </td>
+                <td> {index + 1} </td>
                 <td> {team.initials} </td>
                 <td> {team.name} </td>
                 <td> {team.foundation_year} </td>
