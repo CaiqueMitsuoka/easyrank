@@ -11,15 +11,17 @@ class Home extends Component {
   constructor() {
     super()
 
-    this.state = { teams : [], games: [], initials: '' }
+    this.state = { teams : [], games: [] }
 
     this.handleDelete = this.handleDelete.bind(this)
-    this.getTeamInitials = this.getTeamInitials.bind(this)
+    this.handleDeleteGame = this.handleDeleteGame.bind(this)
+    this.handleFetchTeam = this.handleFetchTeam.bind(this)
   }
 
   componentDidMount() {
     fetchAllTeams()
       .then((teams) => this.setState({ teams }))
+
     fetchAllGames()
       .then((games) => this.setState({ games }))
   }
@@ -44,33 +46,33 @@ class Home extends Component {
     }
   }
 
-  getTeamInitials (teamId) {
-    // fetchTeam(teamId)
-    //   .then((team) => {
-    //     this.setState({initials: team.initials})
-    //   })
-      fetchTeam(teamId)
-        .then((team) => this.setState({teams []}))
+  handleFetchTeam (teamId) {
+    return fetchTeam(teamId)
+      .then((team) => team)
   }
 
   render () {
-    const { teams } = this.state
-    const { games } = this.state
+    const { teams, games } = this.state
 
     return (
       <div className='container'>
         <header>
           <h1> Easy Rank Teams</h1>
         </header>
+
         <div className='linkContainer'>
           <Link to='/team/new' className='link'> Create Team </Link>
         </div>
+
         <Teams teams={teams} handleDelete={this.handleDelete} />
-        <h1 className="title"> Easy Rank Games </h1>
+
+        <h2 className="title"> Easy Rank Games </h2>
+
         <div className='linkContainer'>
           <Link to='/game/new' className='link'> Create Game </Link>
         </div>
-        <Games games={games} handleDelete={this.handleDeleteGame} getTeamInitials={this.getTeamInitials}/>
+
+        <Games games={games} handleDelete={this.handleDeleteGame} handleFetchTeam={this.handleFetchTeam} />
       </div>
     )
   }

@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import Game from './game/Row'
 
 const Games = (props) => {
-  const { games } = props
+  const { games, handleFetchTeam } = props
 
   const handleDelete = (event) => {
     const gameId = event.target.id
@@ -30,16 +30,7 @@ const Games = (props) => {
 
           {
             games.map((game, index) =>
-            <tr key={index}>
-              <td> {props.getTeamInitials(game.home_team_id)} </td>
-              <td> {game.home_score} </td>
-              <td> {props.getTeamInitials(game.foreign_team_id)} </td>
-              <td> {game.foreign_score} </td>
-              <td> {game.date} </td>
-              <td> {game.stadium_name} </td>
-              <td> <Link to={`/game/${game.id}/edit`}> <img src='lead-pencil.png'></img></Link> </td>
-              <td> <button id={game.id} data-name={game.name} onClick={handleDelete} className='btn-delete'> <img src="delete.png"></img> </button> </td>
-            </tr>
+              <Game key={index} handleFetchTeam={handleFetchTeam} game={game} />
           )
         }
         </tbody>
@@ -49,7 +40,8 @@ const Games = (props) => {
 }
 
 Games.propTypes = {
-  games: PropTypes.array.isRequired
+  games: PropTypes.array.isRequired,
+  handleFetchTeam: PropTypes.func.isRequired
 }
 
 export default Games
