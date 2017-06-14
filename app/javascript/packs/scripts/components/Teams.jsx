@@ -36,7 +36,7 @@ const Teams = (props) => {
                 <td> {team.foundation_year} </td>
                 <td> {team.points} </td>
                 <td> <Link to={`/team/${team.id}/edit`} >  <img src='lead-pencil.png'></img></Link> </td>
-                <td> <button id={team.id} data-name={team.name} onClick={handleDelete} className='btn-delete'> <img src="delete.png"></img> </button> </td>
+                <td> <button onClick={handleDelete} className='btn-delete'> <img id={team.id} data-name={team.name} src="delete.png"></img> </button> </td>
               </tr>
             )
           }

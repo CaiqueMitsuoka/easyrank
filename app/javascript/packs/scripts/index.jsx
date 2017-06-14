@@ -6,6 +6,7 @@ import Home from './containers/Home'
 import { CreateTeam } from './containers/team/Create'
 import { CreateGame } from './containers/game/Create'
 import { EditTeam } from './containers/team/Edit'
+import { EditGame } from './containers/game/Edit'
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
           <Route path='/team/new' component={CreateTeam} />
           <Route path='/team/:id/edit' component={EditTeam} />
           <Route path='/game/new' component={CreateGame} />
+          <Route path='/game/:id/edit' component={EditGame} />
         </div>
       </Router>
     )

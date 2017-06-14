@@ -9,6 +9,10 @@ class Form extends Component {
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
   }
 
+  componentDidUpdate() {
+    this.fillFields()
+  }
+
   handleFormSubmit(event) {
     event.preventDefault()
 
@@ -30,6 +34,18 @@ class Form extends Component {
       .then(() => this.clearFields())
   }
 
+  fillFields() {
+    const { game } = this.props
+    
+    this.homeTeamId.value = game.home_team_id
+    this.foreignTeamId.value = game.foreign_team_id
+    this.homeScore.value = game.home_score
+    this.foreignScore.value = game.foreign_score
+    this.startedAt.value = game.started_at
+    this.stadiumName.value = game.stadium_name
+    this.judgeName.value = game.judge_name
+  }
+
   clearFields() {
     this.homeTeamId.value = ''
     this.foreignTeamId.value = ''
@@ -41,6 +57,7 @@ class Form extends Component {
   }
 
   render() {
+    
     const { teams } = this.props
 
     return (
